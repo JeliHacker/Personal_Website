@@ -1,11 +1,11 @@
 My Personal Website
 ===================
 
-My personal website to display my SWE projects.
+My personal website to display my software engineering portfolio, resume, and life updates.
 
 
 Link to Page
 ============
-[www.eligooch.com] (https://www.eligooch.com/)
+Visit me at [www.eligooch.com](https://www.eligooch.com/)
 
 
