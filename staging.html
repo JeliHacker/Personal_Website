@@ -1,10 +1,11 @@
 <html>
-	<head>
-		<link rel="stylesheet" href="mainStyle.css">
-		<title>Eli Gooch</title>
-		<style>
-		
-		html, body {
+
+<head>
+	<link rel="stylesheet" href="mainStyle.css">
+	<title>Eli Gooch</title>
+	<style>
+		html,
+		body {
 			height: 100%;
 			margin: 0;
 			padding: 0;
@@ -22,17 +23,53 @@
 			display: table-cell;
 			vertical-align: middle;
 		}
-		</style>
-	</head>
 
-	<body>
-		<div class="my-block">
+		.websiteLink {
+			color: black;
+			background: none;
+		}
+
+		.websiteLink:hover {
+			color: rgba(100, 200, 200, 1);
+		}
+
+		a {
+			color: rgb(0, 0, 0);
+			text-decoration: none;
+			background:
+				linear-gradient(to right,
+					rgba(100, 200, 200, 1),
+					rgba(100, 200, 200, 1)),
+				linear-gradient(to right,
+					rgba(255, 0, 0, 1),
+					rgba(255, 0, 180, 1),
+					rgba(0, 100, 200, 1));
+			background-size: 100% 3px, 0 3px;
+			background-position: 100% 100%, 0 100%;
+			background-repeat: no-repeat;
+			transition: background-size 400ms;
+		}
+
+		a:hover {
+			color: rgb(39, 89, 225);
+			text-decoration: none;
+			background-size: 0 3px, 100% 3px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="my-block">
 		<h1>
 			Thank you for visiting EliGooch.com!
 		</h1>
 		<h2>
 			If you're seeing this page it means I'm currently updating the site.
 		</h2>
-		</div>
-	</body>
+		<h2>
+			You can still view my projects <a href="https://jelihacker.github.io/">here.</a>
+		</h2>
+	</div>
+</body>
+
 </html>
