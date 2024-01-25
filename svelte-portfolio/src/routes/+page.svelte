@@ -1,5 +1,7 @@
 <script>
-    import Main from "../components/Main.svelte";
+    export const prerender = true;
 </script>
 
-<Main />
+<h1>Hi, I'm Eli.</h1>
+<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+
