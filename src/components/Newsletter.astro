@@ -1,0 +1,95 @@
+---
+// Newsletter signup component - works with Buttondown or Substack
+// Set your newsletter URL in the form action
+const BUTTONDOWN_USERNAME = 'eligooch'; // Change this to your Buttondown username
+---
+
+<div class="newsletter">
+  <h3>Subscribe</h3>
+  <p>Get new posts delivered to your inbox. No spam, unsubscribe anytime.</p>
+  
+  <form
+    action={`https://buttondown.com/api/emails/embed-subscribe/${BUTTONDOWN_USERNAME}`}
+    method="post"
+    target="popupwindow"
+    class="newsletter-form"
+  >
+    <input
+      type="email"
+      name="email"
+      placeholder="your@email.com"
+      required
+    />
+    <button type="submit">Subscribe</button>
+  </form>
+  
+  <p class="alt-sub">
+    Or subscribe via <a href="/rss.xml">RSS</a>
+  </p>
+</div>
+
+<style>
+  .newsletter {
+    background: var(--color-code-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-size: 1rem;
+  }
+
+  input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  button {
+    padding: 0.75rem 1.5rem;
+    background: var(--color-accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  button:hover {
+    background: var(--color-accent-hover);
+  }
+
+  .alt-sub {
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 480px) {
+    .newsletter-form {
+      flex-direction: column;
+    }
+  }
+</style>

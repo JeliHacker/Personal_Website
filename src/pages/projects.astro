@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const projects = [
+  {
+    name: 'DCF Teacher',
+    description: 'AI-powered value investing platform. Like having a tech-savvy Warren Buffett in your pocket.',
+    url: 'https://github.com/JeliHacker/dcf-teacher',
+    tech: ['Python', 'Flask', 'React', 'Gemini AI'],
+  },
+  {
+    name: 'CaptureThis',
+    description: 'Chrome extension for visual web scraping. Click elements, find patterns, export data.',
+    url: 'https://github.com/JeliHacker/capture-this',
+    tech: ['Chrome Extension', 'JavaScript'],
+    wip: true,
+  },
+  // Add more projects here
+];
+---
+
+<BaseLayout title="Projects" description="Things I've built">
+  <h1>Projects</h1>
+  <p class="description">
+    Things I've built, mostly for learning and fun.
+  </p>
+
+  <div class="projects">
+    {projects.map((project) => (
+      <article class="project">
+        <h2>
+          <a href={project.url} target="_blank">
+            {project.name}
+            {project.wip && <span class="wip">WIP</span>}
+          </a>
+        </h2>
+        <p>{project.description}</p>
+        <div class="tech">
+          {project.tech.map((t) => (
+            <span>{t}</span>
+          ))}
+        </div>
+      </article>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .description {
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+  }
+
+  .projects {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .project {
+    padding: 1.5rem;
+    background: var(--color-code-bg);
+    border-radius: 12px;
+  }
+
+  .project h2 {
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .project h2 a {
+    color: var(--color-text);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .project h2 a:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .wip {
+    font-size: 0.7rem;
+    background: var(--color-accent);
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-weight: normal;
+  }
+
+  .project p {
+    color: var(--color-text-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .tech {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tech span {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    background: var(--color-bg);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+</style>

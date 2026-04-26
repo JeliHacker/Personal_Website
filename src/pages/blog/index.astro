@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostList from '../../components/PostList.astro';
+import Newsletter from '../../components/Newsletter.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+---
+
+<BaseLayout title="Blog" description="Longer form writing about software, projects, and life">
+  <h1>Blog</h1>
+  <p class="description">
+    Longer form writing about software, projects, and whatever else is on my mind.
+  </p>
+  
+  <PostList posts={posts} basePath="/blog" />
+  
+  <Newsletter />
+</BaseLayout>
+
+<style>
+  .description {
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+  }
+</style>

@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Update this whenever you update the page
+const lastUpdated = 'April 2026';
+---
+
+<BaseLayout title="Now" description="What I'm currently focused on">
+  <h1>What I'm Doing Now</h1>
+  <p class="meta">
+    This is a <a href="https://nownownow.com/about" target="_blank">now page</a>. 
+    Updated <strong>{lastUpdated}</strong>, from Brooklyn, NY.
+  </p>
+
+  <section>
+    <h2>Working On</h2>
+    <ul>
+      <li>Building <a href="https://github.com/JeliHacker/dcf-teacher">DCF Teacher</a> — an AI-powered value investing platform</li>
+      <li>Learning in public via this TIL page</li>
+      <li>Contributing to open source</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Reading</h2>
+    <ul>
+      <li>Currently reading: <em>TBD</em></li>
+      <li>Recently finished: <em>TBD</em></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Health & Fitness</h2>
+    <ul>
+      <li>Following Bryan Johnson's Blueprint protocol (loosely)</li>
+      <li>Daily nutty pudding smoothie habit</li>
+      <li>Lifting — maintaining strength gains</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Life</h2>
+    <ul>
+      <li>Living in Brooklyn</li>
+      <li>Night owl hours 🦉</li>
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  .meta {
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+  }
+
+  section {
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  ul {
+    color: var(--color-text);
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+</style>

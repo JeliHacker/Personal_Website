@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostList from '../../components/PostList.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('til');
+---
+
+<BaseLayout title="Today I Learned" description="Short notes about things I learn day to day">
+  <h1>Today I Learned</h1>
+  <p class="description">
+    Short notes about things I learn day to day. Inspired by 
+    <a href="https://til.simonwillison.net/" target="_blank">Simon Willison's TIL</a>.
+  </p>
+  
+  <PostList posts={posts} basePath="/til" />
+</BaseLayout>
+
+<style>
+  .description {
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+  }
+</style>

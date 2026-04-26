@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import { getCollection } from 'astro:content';
+
+const tilPosts = await getCollection('til');
+const blogPosts = await getCollection('blog');
+
+const recentTil = tilPosts
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 5);
+
+const recentBlog = blogPosts
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 3);
+---
+
+<BaseLayout title="Home">
+  <section class="intro">
+    <h1>Hey, I'm Eli 👋</h1>
+    <p>
+      I'm a software developer who enjoys building things and learning in public. 
+      This is my corner of the internet where I share what I'm learning, 
+      working on, and thinking about.
+    </p>
+    <p>
+      Check out my <a href="/til">Today I Learned</a> notes, read my <a href="/blog">blog</a>, 
+      or see <a href="/now">what I'm doing now</a>.
+    </p>
+  </section>
+
+  <section>
+    <h2>Recent TIL</h2>
+    <ul class="post-list">
+      {recentTil.map((post) => (
+        <li>
+          <a href={`/til/${post.id}`}>
+            <time>{new Date(post.data.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</time>
+            <span>{post.data.title}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <a href="/til" class="see-all">See all TIL →</a>
+  </section>
+
+  {recentBlog.length > 0 && (
+    <section>
+      <h2>Recent Posts</h2>
+      <ul class="post-list">
+        {recentBlog.map((post) => (
+          <li>
+            <a href={`/blog/${post.id}`}>
+              <time>{new Date(post.data.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</time>
+              <span>{post.data.title}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <a href="/blog" class="see-all">See all posts →</a>
+    </section>
+  )}
+
+  <Newsletter />
+</BaseLayout>
+
+<style>
+  .intro {
+    margin-bottom: 3rem;
+  }
+
+  .intro p {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .post-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  .post-list li {
+    margin-bottom: 0.5rem;
+  }
+
+  .post-list a {
+    display: flex;
+    gap: 1rem;
+    color: var(--color-text);
+  }
+
+  .post-list a:hover span {
+    color: var(--color-accent);
+  }
+
+  .post-list time {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    min-width: 60px;
+  }
+
+  .see-all {
+    font-size: 0.9rem;
+  }
+</style>
